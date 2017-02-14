@@ -35,9 +35,9 @@ Vagrant.configure("2") do |config|
         v.vmx["scsi0.virtualDev"] = "lsisas1068"
         v.vmx["gui.fitguestusingnativedisplayresolution"] = "TRUE"
         v.vmx["mks.enable3d"] = "TRUE"
-        v.vmx["mks.forceDiscreteGPU"] = "TRUE"
-        v.vmx["sound.startconnected"] = "FALSE"
-        v.vmx["sound.present"] = "FALSE"
+        v.vmx["sound.startconnected"] = "TRUE"
+        v.vmx["sound.present"] = "TRUE"
+        v.vmx["sound.filename"] = "-1"
         v.vmx["sound.autodetect"] = "TRUE"
         v.enable_vmrun_ip_lookup = false
     end

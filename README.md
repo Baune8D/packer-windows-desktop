@@ -1,4 +1,5 @@
 # Windows 10 template for Packer
+Based on [https://github.com/StefanScherer/packer-windows](https://github.com/StefanScherer/packer-windows)
 
 ## **Setup**
 **You will most likely need to change the iso url and checksum in the build script!**
