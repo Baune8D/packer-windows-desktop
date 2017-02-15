@@ -21,11 +21,7 @@
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
-        "./scripts/disable-screensaver.ps1",
-        "./scripts/disable-winrm.ps1",
-        "./scripts/enable-winrm.ps1",
-        "./scripts/microsoft-updates.bat",
-        "./scripts/win-updates.ps1"
+        "./scripts/enable-winrm.ps1"
       ],
       "vmx_data": {
         "RemoteDisplay.vnc.enabled": "false",
@@ -54,11 +50,7 @@
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
-        "./scripts/disable-screensaver.ps1",
-        "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1",
-        "./scripts/microsoft-updates.bat",
-        "./scripts/win-updates.ps1",
         "./scripts/oracle-cert.cer"
       ],
       "vboxmanage": [
@@ -94,9 +86,7 @@
       "remote_path": "/tmp/script.bat",
       "execute_command": "{{ .Vars }} cmd /c \"{{ .Path }}\"",
       "scripts": [
-        "./scripts/compile-dotnet-assemblies.bat",
-        "./scripts/set-winrm-automatic.bat",
-        "./scripts/compact.bat"
+        "./scripts/set-winrm-automatic.bat"
       ]
     }
   ],
