@@ -24,10 +24,10 @@
         "./scripts/enable-winrm.ps1"
       ],
       "vmx_data": {
+        "numvcpus": "2",
+        "memsize": "2048",
         "RemoteDisplay.vnc.enabled": "false",
         "RemoteDisplay.vnc.port": "5900",
-        "memsize": "2048",
-        "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068"
       }
     },
@@ -44,7 +44,7 @@
       "winrm_password": "vagrant",
       "winrm_timeout": "2h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "guest_os_type": "Windows81_64",
+      "guest_os_type": "Windows10_64",
       "guest_additions_mode": "disable",
       "disk_size": "{{user `disk_size`}}",
       "floppy_files": [
@@ -57,14 +57,14 @@
         [
           "modifyvm",
           "{{.Name}}",
-          "--memory",
-          "2048"
+          "--cpus",
+          "2"
         ],
         [
           "modifyvm",
           "{{.Name}}",
-          "--cpus",
-          "2"
+          "--memory",
+          "2048"
         ]
       ]
     },
@@ -92,11 +92,11 @@
       "prlctl": [
         [
           "set", "{{.Name}}",
-          "--memsize", "2048"
+          "--cpus", "2"
         ],
         [
           "set", "{{.Name}}",
-          "--cpus", "2"
+          "--memsize", "2048"
         ],
         [
           "set", "{{.Name}}",
