@@ -30,6 +30,6 @@ The result output will be a box file named: **windows_10_<vm_type>.box**
 WinRM service configured and started automatically.  
 32 & 64 bit Powershell execution policy set to RemoteSigned.  
 UAC disabled.  
-Networks set to private.
+Networks set to private.  
 Default admin user: vagrant  
 Default admin password: vagrant
