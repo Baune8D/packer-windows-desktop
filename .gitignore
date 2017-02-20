@@ -13,7 +13,7 @@
 *~
 /output/
 *.webm
-tmp/
+tmp
 /issues/
 *.iso
 /windows_10_vmware/
