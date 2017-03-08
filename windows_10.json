@@ -86,8 +86,7 @@
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
-        "./scripts/enable-winrm.ps1",
-        "./scripts/oracle-cert.cer"
+        "./scripts/enable-winrm.ps1"
       ],
       "prlctl": [
         [
