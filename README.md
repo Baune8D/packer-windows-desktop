@@ -1,9 +1,9 @@
 # Windows 10 template for Packer
 Based on [https://github.com/StefanScherer/packer-windows](https://github.com/StefanScherer/packer-windows)  
-and [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
+which is forked from [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 
 ## **Setup**
-**You will most likely need to change the iso url and checksum in the build script!**
+**You might need to change the iso url and checksum in the build script!**
 
 ### **Requires:**
 A Windows 10 Pro ISO - (**MSDN**)  
@@ -13,8 +13,6 @@ Packer - [Link](https://www.packer.io/docs/installation.html)
 Windows: **build_windows_10.bat <vm_type>**  
 Linux / OSX: **./build_windows_10.sh <vm_type>**  
 **<vm_type>** Can be either 'vmware', 'virtualbox' or 'parallels'.
-
-If you want to see whats going on while it builds, change headless to true in json.
 
 ## **Information:**
 Put your windows ISO into the ./iso/ folder.
