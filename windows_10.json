@@ -6,7 +6,7 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "headless": true,
+      "headless": false,
       "boot_wait": "6m",
       "boot_command": "",
       "winrm_username": "vagrant",
@@ -21,13 +21,14 @@
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
+        "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1"
       ],
       "vmx_data": {
-        "numvcpus": "2",
-        "memsize": "2048",
         "RemoteDisplay.vnc.enabled": "false",
         "RemoteDisplay.vnc.port": "5900",
+        "memsize": "2048",
+        "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068"
       }
     },
@@ -50,6 +51,7 @@
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
+        "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1",
         "./scripts/oracle-cert.cer"
       ],
@@ -57,14 +59,14 @@
         [
           "modifyvm",
           "{{.Name}}",
-          "--cpus",
-          "2"
+          "--memory",
+          "2048"
         ],
         [
           "modifyvm",
           "{{.Name}}",
-          "--memory",
-          "2048"
+          "--cpus",
+          "2"
         ]
       ]
     },
@@ -86,16 +88,17 @@
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
+        "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1"
       ],
       "prlctl": [
         [
           "set", "{{.Name}}",
-          "--cpus", "2"
+          "--memsize", "2048"
         ],
         [
           "set", "{{.Name}}",
-          "--memsize", "2048"
+          "--cpus", "2"
         ],
         [
           "set", "{{.Name}}",
@@ -142,9 +145,9 @@
     }
   ],
   "variables": {
-    "iso_url": "./iso/some_windows_10_pro_installation_media.iso",
+    "iso_url": "https://software-download.microsoft.com/pr/Windows10_InsiderPreview_EnterpriseVL_x64_en-us_15042.iso",
     "iso_checksum_type": "sha1",
-    "iso_checksum": "a86ae3d664553cd0ee9a6bcd83a5dbe92e3dc41a",
+    "iso_checksum": "e7b84c020fb9cbe34c50b18b9d4ce6bffe973387",
     "autounattend": "./answer_files/10/Autounattend.xml",
     "disk_size": "61440"
   }
