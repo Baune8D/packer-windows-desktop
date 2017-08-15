@@ -145,9 +145,7 @@
     }
   ],
   "variables": {
-    "iso_url": "https://software-download.microsoft.com/pr/Windows10_InsiderPreview_EnterpriseVL_x64_en-us_15042.iso",
     "iso_checksum_type": "sha1",
-    "iso_checksum": "e7b84c020fb9cbe34c50b18b9d4ce6bffe973387",
     "autounattend": "./answer_files/10/Autounattend.xml",
     "disk_size": "61440"
   }
