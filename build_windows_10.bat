@@ -4,5 +4,5 @@ packer build --only=%1-iso ^
     --var vhv_enable=true ^
     --var disk_size=262144 ^
     --var iso_url=./iso/en_windows_10_multi-edition_version_1709_updated_nov_2017_x64_dvd_100290211.iso ^
-    --var iso_checksum=F6E6B43F931DC41622E8AC107A5E82A3CEC7FC66 ^
+    --var iso_checksum=1F958B6A80A542C82EECD918126F665AA7381D34 ^
     windows_10.json
