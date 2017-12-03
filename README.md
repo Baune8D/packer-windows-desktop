@@ -3,10 +3,12 @@ Based on [https://github.com/StefanScherer/packer-windows](https://github.com/St
 which is forked from [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 
 ## **Setup**
-**You might need to change the iso url and checksum in the build script!**
+
+**NOTE!** The script is set to build with English UI language and Danish system locale.  
+This can be changed in answer_files/10/Autounattend.xml
 
 ### **Requires:**
-A Windows 10 Pro ISO - (**MSDN**)  
+A Windows 10 ISO - (**MSDN**)  
 Packer - [Link](https://www.packer.io/docs/installation.html)
 
 **To use the default settings, execute from repo root:**  
@@ -24,10 +26,11 @@ The following variables can be modified in the build script:
 
 The result output will be a box file named: **windows_10_<vm_type>.box**
 
-#### Will set the following settings for Vagrant compatibility:
+#### The script will adjust the following settings for Vagrant compatibility:
 WinRM service configured and started automatically.  
 32 & 64 bit Powershell execution policy set to RemoteSigned.  
 UAC disabled.  
 Networks set to private.  
+Autologin enabled.  
 Default admin user: vagrant  
 Default admin password: vagrant
