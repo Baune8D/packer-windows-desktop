@@ -2,19 +2,21 @@
   "builders": [
     {
       "type": "vmware-iso",
+      "vm_name": "windows_10",
       "communicator": "winrm",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "headless": false,
+      "headless": "{{user `headless`}}",
       "boot_wait": "6m",
       "boot_command": "",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
-      "winrm_timeout": "2h",
+      "winrm_timeout": "{{user `winrm_timeout`}}",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "windows9-64",
       "disk_size": "{{user `disk_size`}}",
+      "disk_type_id": "{{user `disk_type_id`}}",
       "vnc_port_min": 5900,
       "vnc_port_max": 5980,
       "version": 12,
@@ -24,26 +26,28 @@
         "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1"
       ],
+      "vmx_remove_ethernet_interfaces": true,
       "vmx_data": {
         "RemoteDisplay.vnc.enabled": "false",
         "RemoteDisplay.vnc.port": "5900",
-        "memsize": "2048",
-        "numvcpus": "2",
+        "memsize": "{{user `memory_size`}}",
+        "numvcpus": "{{user `cpus`}}",
         "scsi0.virtualDev": "lsisas1068"
       }
     },
     {
       "type": "virtualbox-iso",
+      "vm_name": "windows_10",
       "communicator": "winrm",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "headless": false,
+      "headless": "{{user `headless`}}",
       "boot_wait": "6m",
       "boot_command": "",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
-      "winrm_timeout": "2h",
+      "winrm_timeout": "{{user `winrm_timeout`}}",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "Windows10_64",
       "guest_additions_mode": "disable",
@@ -52,26 +56,26 @@
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
         "./scripts/disable-winrm.ps1",
-        "./scripts/enable-winrm.ps1",
-        "./scripts/oracle-cert.cer"
+        "./scripts/enable-winrm.ps1"
       ],
       "vboxmanage": [
         [
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "2048"
+          "{{user `memory_size`}}"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "2"
+          "{{user `cpus`}}"
         ]
       ]
     },
     {
       "type": "parallels-iso",
+      "vm_name": "windows_10",
       "communicator": "winrm",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -80,7 +84,7 @@
       "boot_command": "",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
-      "winrm_timeout": "2h",
+      "winrm_timeout": "{{user `winrm_timeout`}}",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "win-10",
       "parallels_tools_flavor": "win",
@@ -94,11 +98,11 @@
       "prlctl": [
         [
           "set", "{{.Name}}",
-          "--memsize", "2048"
+          "--memsize", "{{user `memory_size`}}"
         ],
         [
           "set", "{{.Name}}",
-          "--cpus", "2"
+          "--cpus", "{{user `cpus`}}"
         ],
         [
           "set", "{{.Name}}",
@@ -125,7 +129,8 @@
       ]
     },
     {
-      "type": "windows-restart"
+      "type": "windows-restart",
+      "restart_timeout": "{{user `restart_timeout`}}"
     },
     {
       "type": "windows-shell",
@@ -145,8 +150,15 @@
     }
   ],
   "variables": {
+    "headless": "false",
+    "disk_size": "61440",
+    "disk_type_id": "1",
+    "vhv_enable": "false",
     "iso_checksum_type": "sha1",
     "autounattend": "./answer_files/10/Autounattend.xml",
-    "disk_size": "61440"
+    "restart_timeout": "5m",
+    "winrm_timeout": "6h",
+    "cpus": "2",
+    "memory_size": "2048"
   }
 }
