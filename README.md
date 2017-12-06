@@ -4,9 +4,6 @@ which is forked from [https://github.com/joefitzgerald/packer-windows](https://g
 
 ## **Setup**
 
-**NOTE!** The script is set to build with English UI language and Danish system locale.  
-This can be changed in answer_files/10/Autounattend.xml
-
 ### **Requires:**
 A Windows 10 ISO - (**MSDN**)  
 Packer - [Link](https://www.packer.io/docs/installation.html)
