@@ -153,7 +153,6 @@
     "headless": "false",
     "disk_size": "61440",
     "disk_type_id": "1",
-    "vhv_enable": "false",
     "iso_checksum_type": "sha1",
     "autounattend": "./answer_files/10/Autounattend.xml",
     "restart_timeout": "5m",
