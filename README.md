@@ -4,6 +4,8 @@ which is forked from [https://github.com/joefitzgerald/packer-windows](https://g
 
 Prebuilt images can be found here: [https://app.vagrantup.com/baunegaard](https://app.vagrantup.com/baunegaard)
 
+**This branch uses da-DK locale and en-US language**
+
 This repository aims at creating Windows desktop boxes with a minimum of changes.  
 It will only change what is necessary for `packer` and `vagrant` to properly work.
 
