@@ -2,6 +2,8 @@
 Based on [https://github.com/StefanScherer/packer-windows](https://github.com/StefanScherer/packer-windows)  
 which is forked from [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 
+Prebuilt images here: [https://app.vagrantup.com/baunegaard](https://app.vagrantup.com/baunegaard)
+
 ## Setup
 
 ### Requires:
