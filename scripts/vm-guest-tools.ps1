@@ -86,4 +86,17 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "virtualbox-iso") {
     Remove-Item -Force -Recurse "C:\Windows\Temp\virtualbox"
 }
 
+if ("$env:PACKER_BUILDER_TYPE" -eq "parallels-iso") {
+    Write-Host "Using Parallels"
+
+    if (Test-Path "C:\Users\vagrant\prl-tools-win.iso") {
+        Move-Item -Force C:\Users\vagrant\prl-tools-win.iso C:\Windows\Temp
+        cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\prl-tools-win.iso -oC:\Windows\Temp\parallels
+        cmd /c C:\Windows\Temp\parallels\PTAgent.exe /install_silent
+
+        Remove-Item -Force "C:\Windows\Temp\prl-tools-win.iso"
+        Remove-Item -Force -Recurse "C:\Windows\Temp\parallels"
+    }
+}
+
 cmd /c msiexec /qb /x C:\Windows\Temp\7z1900-x64.msi
