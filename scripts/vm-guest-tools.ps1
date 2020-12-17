@@ -36,7 +36,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "vmware-iso") {
         }
 
         cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\vmware-tools.tar -oC:\Windows\Temp 
-        Move-Item c:\windows\temp\VMware-tools-windows-*.iso c:\windows\temp\windows.iso
+        Move-Item C:\Windows\Temp\VMware-tools-windows-*.iso C:\Windows\Temp\windows.iso
         Try {
             Remove-Item "C:\Program Files (x86)\VMWare" -Recurse -Force -ErrorAction Stop
         } Catch {
@@ -78,7 +78,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "virtualbox-iso") {
         }
     }
 
-    cmd /c ""C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\VBoxGuestAdditions.iso -oC:\Windows\Temp\virtualbox"
+    cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\VBoxGuestAdditions.iso -oC:\Windows\Temp\virtualbox
     Get-ChildItem "C:\Windows\Temp\virtualbox\cert\" -Filter vbox*.cer | Foreach-Object { C:\Windows\Temp\virtualbox\cert\VBoxCertUtil add-trusted-publisher $_.FullName --root $_.FullName }
     cmd /c C:\Windows\Temp\virtualbox\VBoxWindowsAdditions.exe /S
     cmd /c rd /S /Q "C:\Windows\Temp\virtualbox"
