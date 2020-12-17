@@ -32,7 +32,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "vmware-iso") {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVMwareToolsURL", 'C:\Windows\Temp\vmware-tools.tar')
         } Catch {
             Write-Host "Unable to determine the latest version of VMware tools. Falling back to hardcoded URL."
-            (New-Object System.Net.WebClient).DownloadFile('https://softwareupdate.vmware.com/cds/vmw-desktop/ws/15.5.5/16285975/windows/packages/tools-windows.tar', 'C:\Windows\Temp\vmware-tools.tar')
+            (New-Object System.Net.WebClient).DownloadFile('https://softwareupdate.vmware.com/cds/vmw-desktop/ws/16.1.0/17198959/windows/packages/tools-windows.tar', 'C:\Windows\Temp\vmware-tools.tar')
         }
 
         cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\vmware-tools.tar -oC:\Windows\Temp 
@@ -74,7 +74,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "virtualbox-iso") {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVboxToolsURL", 'C:\Windows\Temp\VBoxGuestAdditions.iso')
         } Catch {
             Write-Host "Unable to determine the latest version of VBox tools. Falling back to hardcoded URL."
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile('https://download.virtualbox.org/virtualbox/6.1.8/VBoxGuestAdditions_6.1.8.iso', 'C:\Windows\Temp\VBoxGuestAdditions.iso')
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile('https://download.virtualbox.org/virtualbox/6.1.16/VBoxGuestAdditions_6.1.16.iso', 'C:\Windows\Temp\VBoxGuestAdditions.iso')
         }
     }
 
