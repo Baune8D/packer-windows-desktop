@@ -17,8 +17,8 @@ Linux / OSX: ```./build_windows_10.sh <vm_type>```
 
 ## Information:
 The following variables can be modified in the build script:  
-```iso_url``` - URL to ISO file. (Should be located in ./iso)  
-```iso_checksum``` - SHA1 checksum of ISO file.  
+```iso_url``` - Path to ISO file.  
+```iso_checksum``` - Checksum of ISO file.  
 ```disk_size``` - Max size in MB of dynamic hard drive file.
 
 The result output will be a box file named: ```windows_10_<vm_type>.box```
@@ -26,7 +26,6 @@ The result output will be a box file named: ```windows_10_<vm_type>.box```
 #### The script will adjust the following settings for Vagrant compatibility:
 WinRM service configured and started automatically.  
 32 & 64 bit Powershell execution policy set to RemoteSigned.  
-UAC disabled.  
 Networks set to private.  
 Autologin enabled.  
 Default admin user: vagrant  
