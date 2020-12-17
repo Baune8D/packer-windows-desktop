@@ -83,12 +83,6 @@
         [
           "set",
           "{{.Name}}",
-          "--adaptive-hypervisor",
-          "on"
-        ],
-        [
-          "set",
-          "{{.Name}}",
           "--efi-boot",
           "off"
         ]
@@ -134,7 +128,6 @@
     "memory": "2048",
     "headless": "false",
     "restart_timeout": "5m",
-    "vhv_enable": "false",
     "vm_name": "windows_10",
     "winrm_timeout": "6h"
   }
