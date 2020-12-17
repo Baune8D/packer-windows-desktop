@@ -81,7 +81,9 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "virtualbox-iso") {
     cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\VBoxGuestAdditions.iso -oC:\Windows\Temp\virtualbox
     Get-ChildItem "C:\Windows\Temp\virtualbox\cert\" -Filter vbox*.cer | Foreach-Object { C:\Windows\Temp\virtualbox\cert\VBoxCertUtil add-trusted-publisher $_.FullName --root $_.FullName }
     cmd /c C:\Windows\Temp\virtualbox\VBoxWindowsAdditions.exe /S
-    cmd /c rd /S /Q "C:\Windows\Temp\virtualbox"
+
+    Remove-Item -Force "C:\Windows\Temp\VBoxGuestAdditions.iso"
+    Remove-Item -Force -Recurse "C:\Windows\Temp\virtualbox"
 }
 
 cmd /c msiexec /qb /x C:\Windows\Temp\7z1900-x64.msi
