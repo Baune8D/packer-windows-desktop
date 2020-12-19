@@ -23,10 +23,19 @@ The following variables can be modified in the build script:
 
 The result output will be a box file named: ```windows_10_<vm_type>.box```
 
+Newest availble guest tools will be fetched and installed for ```VMware``` and ```Virtualbox```.  
+For ```Parallels```, the guest tools of the version you are building with is installed.
+
+Microsoft updates are enabled and all available Windows updates will be installed on setup.  
+This can be changed in ```answer_files/10/Autounattend.xml```
+
 #### The script will adjust the following settings for Vagrant compatibility:
 WinRM service configured and started automatically.  
 32 & 64 bit Powershell execution policy set to RemoteSigned.  
+UAC disabled.  
 Networks set to private.  
-Autologin enabled.  
+Hibernation disabled.  
+Screensaver disabled.  
+Automatic logon enabled.  
 Default admin user: vagrant  
 Default admin password: vagrant
