@@ -1,6 +1,33 @@
 {
   "builders": [
     {
+      "boot_wait": "6m",
+      "communicator": "winrm",
+      "configuration_version": "9.0",
+      "cpus": "2",
+      "disk_size": "{{user `disk_size`}}",
+      "floppy_files": [
+        "{{user `autounattend`}}",
+        "./scripts/fixnetwork.ps1",
+        "./scripts/disable-screensaver.ps1",
+        "./scripts/disable-winrm.ps1",
+        "./scripts/enable-winrm.ps1",
+        "./scripts/microsoft-updates.bat",
+        "./scripts/win-updates.ps1"
+      ],
+      "guest_additions_mode": "none",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "memory": "{{user `memory`}}",
+      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "switch_name": "{{user `switch_name`}}",
+      "type": "hyperv-iso",
+      "vm_name": "{{user `vm_name`}}",
+      "winrm_password": "vagrant",
+      "winrm_timeout": "{{user `winrm_timeout`}}",
+      "winrm_username": "vagrant"
+    },
+    {
       "boot_command": "",
       "boot_wait": "6m",
       "communicator": "winrm",

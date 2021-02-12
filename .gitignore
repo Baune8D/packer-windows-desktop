@@ -1,6 +1,7 @@
 .DS_Store
 /iso/*
 !/iso/README.md
+/output-hyperv-iso/
 /output-parallels/
 /output-parallels-iso/
 /output-parallels-pvm/

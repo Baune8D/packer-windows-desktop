@@ -13,7 +13,8 @@ Prebuilt images here: [https://app.vagrantup.com/baunegaard](https://app.vagrant
 **To use the default settings, execute from repo root:**  
 Windows: ```build_windows_10.bat <vm_type>```  
 Linux / OSX: ```./build_windows_10.sh <vm_type>```  
-```<vm_type>``` Can be either ```vmware```, ```virtualbox``` or ```parallels```.
+```<vm_type>``` Can be either ```vmware```, ```virtualbox``` or ```parallels```.  
+For Hyper-V run ```build_windows_10_hyperv.bat```
 
 ## Information:
 The following variables can be modified in the build script:  
