@@ -1,24 +1,22 @@
 {
   "builders": [
     {
-      "boot_wait": "6m",
+      "boot_command": ["a<wait>a<wait>a"],
+      "boot_wait": "-1s",
       "communicator": "winrm",
       "configuration_version": "9.0",
       "cpus": "2",
       "disk_size": "{{user `disk_size`}}",
-      "floppy_files": [
-        "{{user `autounattend`}}",
-        "./scripts/fixnetwork.ps1",
-        "./scripts/disable-screensaver.ps1",
-        "./scripts/disable-winrm.ps1",
-        "./scripts/enable-winrm.ps1",
-        "./scripts/microsoft-updates.bat",
-        "./scripts/win-updates.ps1"
-      ],
+      "enable_secure_boot": true,
+      "floppy_files": [],
+      "generation": "2",
       "guest_additions_mode": "none",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_url": "{{user `iso_url`}}",
       "memory": "{{user `memory`}}",
+      "secondary_iso_images": [
+        "./answer-iso/answer.iso"
+      ],
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "switch_name": "{{user `switch_name`}}",
       "type": "hyperv-iso",

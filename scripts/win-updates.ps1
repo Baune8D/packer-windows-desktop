@@ -13,6 +13,14 @@ function LogWrite {
    Write-Output $logstring
 }
 
+function EnableWinRM {
+    if (Test-Path -Path 'E:\Autounattend.xml') {
+        & "E:\enable-winrm.ps1"
+    } else {
+        & "A:\enable-winrm.ps1"
+    }
+}
+
 function Check-ContinueRestartOrEnd() {
     $RegistryKey = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
     $RegistryEntry = "InstallWindowsUpdates"
@@ -31,10 +39,10 @@ function Check-ContinueRestartOrEnd() {
                 Install-WindowsUpdates
             } elseif ($script:Cycles -gt $global:MaxCycles) {
                 LogWrite "Exceeded Cycle Count - Stopping"
-                & "a:\enable-winrm.ps1"
+                EnableWinRM
             } else {
                 LogWrite "Done Installing Windows Updates"
-                & "a:\enable-winrm.ps1"
+                EnableWinRM
             }
         }
         1 {
@@ -126,7 +134,7 @@ function Install-WindowsUpdates() {
         LogWrite 'No updates available to install...'
         $global:MoreUpdates=0
         $global:RestartRequired=0
-        & "a:\enable-winrm.ps1"
+        EnableWinRM
         break
     }
 

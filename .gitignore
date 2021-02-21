@@ -13,6 +13,7 @@
 /output-virtualbox-ovf/
 /*.box
 /packer_cache/
+/answer-iso/
 *.log
 *~
 *.swp
@@ -23,3 +24,4 @@ tmp
 *.iso
 path-to.vmx
 packer
+mkisofs.exe
