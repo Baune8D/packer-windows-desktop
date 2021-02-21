@@ -26,7 +26,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "vmware-iso") {
 
             $nextURISubdirectoryObject = (Invoke-WebRequest("https://softwareupdate.vmware.com/cds/vmw-desktop/ws/$newestVersion/") -UseBasicParsing).Links | Where-Object { $_.href -Match "[0-9]" } | Select-Object href | Where-Object { $_.href -Match "[0-9]" }
             $nextUriSubdirectory = $nextURISubdirectoryObject.href | Out-String
-            $nextUriSubdirectory = $nextUriSubdirectory.TrimEnd("`r?`n") 
+            $nextUriSubdirectory = $nextUriSubdirectory.TrimEnd("`r?`n")
             $newestVMwareToolsURL = "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/$newestVersion/$nextURISubdirectory/windows/packages/tools-windows.tar"
             Write-Host "The latest version of VMware tools has been determined to be downloadable from $newestVMwareToolsURL"
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVMwareToolsURL", 'C:\Windows\Temp\vmware-tools.tar')
@@ -35,7 +35,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "vmware-iso") {
             (New-Object System.Net.WebClient).DownloadFile('https://softwareupdate.vmware.com/cds/vmw-desktop/ws/16.1.0/17198959/windows/packages/tools-windows.tar', 'C:\Windows\Temp\vmware-tools.tar')
         }
 
-        cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\vmware-tools.tar -oC:\Windows\Temp 
+        cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\vmware-tools.tar -oC:\Windows\Temp
         Move-Item C:\Windows\Temp\VMware-tools-windows-*.iso C:\Windows\Temp\windows.iso
         Try {
             Remove-Item "C:\Program Files (x86)\VMWare" -Recurse -Force -ErrorAction Stop
