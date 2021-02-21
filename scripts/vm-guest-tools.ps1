@@ -74,7 +74,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "virtualbox-iso") {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVboxToolsURL", 'C:\Windows\Temp\VBoxGuestAdditions.iso')
         } Catch {
             Write-Host "Unable to determine the latest version of VBox tools. Falling back to hardcoded URL."
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile('https://download.virtualbox.org/virtualbox/6.1.16/VBoxGuestAdditions_6.1.16.iso', 'C:\Windows\Temp\VBoxGuestAdditions.iso')
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile('https://download.virtualbox.org/virtualbox/6.1.18/VBoxGuestAdditions_6.1.18.iso', 'C:\Windows\Temp\VBoxGuestAdditions.iso')
         }
     }
 
