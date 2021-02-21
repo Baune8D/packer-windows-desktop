@@ -1,6 +1,6 @@
 #!/bin/bash
-./packer build --only=$1-iso \
+packer build --only=$1-iso \
     --var disk_size=262144 \
-    --var iso_url=./iso/Win10_20H2_English_x64.iso \
-    --var iso_checksum=sha256:E793F3C94D075B1AA710EC8D462CEE77FDE82CAF400D143D68036F72C12D9A7E \
+    --var iso_url=./iso/Windows.iso \
+    --var iso_checksum=sha256:DDF91DF5BDF2230446EB77A959B7555C59D79F6BC7C622F7E16D31A9BA34A5BF \
     windows_10.json
