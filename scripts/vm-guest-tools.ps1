@@ -32,7 +32,7 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "vmware-iso") {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVMwareToolsURL", 'C:\Windows\Temp\vmware-tools.tar')
         } Catch {
             Write-Host "Unable to determine the latest version of VMware tools. Falling back to hardcoded URL."
-            (New-Object System.Net.WebClient).DownloadFile('https://softwareupdate.vmware.com/cds/vmw-desktop/ws/16.1.0/17198959/windows/packages/tools-windows.tar', 'C:\Windows\Temp\vmware-tools.tar')
+            (New-Object System.Net.WebClient).DownloadFile('https://softwareupdate.vmware.com/cds/vmw-desktop/ws/16.1.1/17801498/windows/packages/tools-windows.tar', 'C:\Windows\Temp\vmware-tools.tar')
         }
 
         cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\vmware-tools.tar -oC:\Windows\Temp
