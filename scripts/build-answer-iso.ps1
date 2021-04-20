@@ -1,5 +1,4 @@
-$currentScriptPath = Split-Path -Path $MyInvocation.MyCommand.Path
-$root = Resolve-Path -Path "$currentScriptPath\.."
+$root = Resolve-Path -Path "$PSScriptRoot\.."
 $scripts = "$root\scripts"
 
 $isoFolder = "$root\answer-iso"
