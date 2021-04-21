@@ -136,6 +136,14 @@
   ],
   "provisioners": [
     {
+      "execute_command": "{{ .Vars }} cmd /c \"{{ .Path }}\"",
+      "remote_path": "/tmp/script.bat",
+      "scripts": [
+        "./scripts/enable-rdp.bat"
+      ],
+      "type": "windows-shell"
+    },
+    {
       "scripts": [
         "./scripts/vm-guest-tools.ps1"
       ],

@@ -35,6 +35,7 @@ Microsoft updates are enabled and all available Windows updates will be installe
 * WinRM service configured and started automatically.  
 * 32 & 64 bit Powershell execution policy set to RemoteSigned.  
 * UAC disabled.  
+* RDP enabled.  
 * Networks set to private.  
 * Hibernation disabled.  
 * Screensaver disabled.  
