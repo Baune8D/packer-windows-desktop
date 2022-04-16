@@ -3,38 +3,8 @@
     {
       "boot_command": ["a<wait>a<wait>a"],
       "boot_wait": "-1s",
-      "communicator": "winrm",
-      "configuration_version": "9.0",
-      "cpus": "2",
-      "disk_size": "{{user `disk_size`}}",
-      "enable_secure_boot": true,
-      "floppy_files": [],
-      "generation": "2",
-      "guest_additions_mode": "none",
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_url": "{{user `iso_url`}}",
-      "memory": "{{user `memory`}}",
-      "secondary_iso_images": [
-        "./answer-iso/answer.iso"
-      ],
-      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "switch_name": "{{user `switch_name`}}",
-      "type": "hyperv-iso",
-      "vm_name": "{{user `vm_name`}}",
-      "winrm_password": "vagrant",
-      "winrm_timeout": "{{user `winrm_timeout`}}",
-      "winrm_username": "vagrant"
-    },
-    {
-      "boot_command": "",
-      "boot_wait": "6m",
-      "communicator": "winrm",
-      "cpus": 2,
-      "disk_adapter_type": "lsisas1068",
-      "disk_size": "{{user `disk_size`}}",
-      "disk_type_id": "{{user `disk_type_id`}}",
-      "floppy_files": [
-        "{{user `autounattend`}}",
+      "cd_files": [
+        "./answer_files/10_efi/Autounattend.xml",
         "./scripts/fixnetwork.ps1",
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
@@ -42,6 +12,44 @@
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1"
       ],
+      "communicator": "winrm",
+      "configuration_version": "10.0",
+      "cpus": "{{user `cpus`}}",
+      "disk_size": "{{user `disk_size`}}",
+      "enable_dynamic_memory": false,
+      "enable_mac_spoofing": true,
+      "enable_secure_boot": true,
+      "enable_virtualization_extensions": true,
+      "generation": "2",
+      "guest_additions_mode": "disable",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "memory": "{{user `memory`}}",
+      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "switch_name": "Default Switch",
+      "type": "hyperv-iso",
+      "vm_name": "{{user `vm_name`}}",
+      "winrm_password": "vagrant",
+      "winrm_timeout": "6h",
+      "winrm_username": "vagrant"
+    },
+    {
+      "boot_command": ["a<wait>a<wait>a"],
+      "boot_wait": "-1s",
+      "cd_files": [
+        "./answer_files/10_efi/Autounattend.xml",
+        "./scripts/fixnetwork.ps1",
+        "./scripts/disable-screensaver.ps1",
+        "./scripts/disable-winrm.ps1",
+        "./scripts/enable-winrm.ps1",
+        "./scripts/microsoft-updates.bat",
+        "./scripts/win-updates.ps1"
+      ],
+      "communicator": "winrm",
+      "cpus": "{{user `cpus`}}",
+      "disk_adapter_type": "lsisas1068",
+      "disk_size": "{{user `disk_size`}}",
+      "disk_type_id": "1",
       "guest_os_type": "windows9-64",
       "headless": "{{user `headless`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
@@ -49,9 +57,10 @@
       "memory": "{{user `memory`}}",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "type": "vmware-iso",
-      "version": "{{user `vmx_version`}}",
+      "version": "19",
       "vm_name": "{{user `vm_name`}}",
       "vmx_data": {
+        "firmware": "efi",
         "RemoteDisplay.vnc.enabled": "false",
         "RemoteDisplay.vnc.port": "5900"
       },
@@ -59,17 +68,14 @@
       "vnc_port_max": 5980,
       "vnc_port_min": 5900,
       "winrm_password": "vagrant",
-      "winrm_timeout": "{{user `winrm_timeout`}}",
+      "winrm_timeout": "6h",
       "winrm_username": "vagrant"
     },
     {
-      "boot_command": "",
-      "boot_wait": "6m",
-      "communicator": "winrm",
-      "cpus": 2,
-      "disk_size": "{{user `disk_size`}}",
-      "floppy_files": [
-        "{{user `autounattend`}}",
+      "boot_command": ["a<wait>a<wait>a"],
+      "boot_wait": "-1s",
+      "cd_files": [
+        "./answer_files/10_efi/Autounattend.xml",
         "./scripts/fixnetwork.ps1",
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
@@ -77,6 +83,10 @@
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1"
       ],
+      "communicator": "winrm",
+      "cpus": "{{user `cpus`}}",
+      "disk_size": "{{user `disk_size`}}",
+      "firmware": "efi",
       "guest_additions_mode": "disable",
       "guest_os_type": "Windows10_64",
       "headless": "{{user `headless`}}",
@@ -87,17 +97,17 @@
       "type": "virtualbox-iso",
       "vm_name": "{{user `vm_name`}}",
       "winrm_password": "vagrant",
-      "winrm_timeout": "{{user `winrm_timeout`}}",
+      "winrm_timeout": "6h",
       "winrm_username": "vagrant"
     },
     {
       "boot_command": "",
       "boot_wait": "6m",
       "communicator": "winrm",
-      "cpus": 2,
+      "cpus": "{{user `cpus`}}",
       "disk_size": "{{user `disk_size`}}",
       "floppy_files": [
-        "{{user `autounattend`}}",
+        "./answer_files/10/Autounattend.xml",
         "./scripts/fixnetwork.ps1",
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
@@ -122,7 +132,7 @@
       ],
       "vm_name": "{{user `vm_name`}}",
       "winrm_password": "vagrant",
-      "winrm_timeout": "{{user `winrm_timeout`}}",
+      "winrm_timeout": "6h",
       "winrm_username": "vagrant"
     }
   ],
@@ -150,7 +160,7 @@
       "type": "powershell"
     },
     {
-      "restart_timeout": "{{user `restart_timeout`}}",
+      "restart_timeout": "5m",
       "type": "windows-restart"
     },
     {
@@ -163,14 +173,12 @@
     }
   ],
   "variables": {
-    "autounattend": "./answer_files/10/Autounattend.xml",
-    "disk_size": "61440",
-    "disk_type_id": "1",
-    "memory": "2048",
+    "cpus": "2",
+    "disk_size": "262144",
     "headless": "false",
-    "restart_timeout": "5m",
-    "vm_name": "windows_10",
-    "winrm_timeout": "6h",
-    "vmx_version": "18"
+    "iso_url": "./iso/Windows_10.iso",
+    "iso_checksum": "none",
+    "memory": "2048",
+    "vm_name": "windows_10"
   }
 }
