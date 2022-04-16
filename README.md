@@ -1,4 +1,4 @@
-# Windows 10 template for Packer
+# Windows desktop templates for Packer
 Based on [https://github.com/StefanScherer/packer-windows](https://github.com/StefanScherer/packer-windows)  
 which is forked from [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 
@@ -7,24 +7,23 @@ Prebuilt images here: [https://app.vagrantup.com/baunegaard](https://app.vagrant
 ## Setup
 
 ### Requires:
-* **Windows 10 ISO** - (Drop into ./iso folder)
-* **mkisofs.exe** if building Hyper-V (Drop into root folder)
+* **Windows 10 / 11 ISO** - (Drop into ./iso folder)
 
 **To use the default settings, execute from repo root:**  
-* Windows: `build_windows_10.bat <vm_type>`
-* Linux / OSX: `./build_windows_10.sh <vm_type>`
+* Windows: `.\build_windows_<windows_version>.ps1 <vm_type>`
+* Linux / OSX: `./build_windows_<windows_version>.sh <vm_type>`
 
-`<vm_type>` Can be either `vmware`, `virtualbox` or `parallels`.  
-For Generation 2 Hyper-V run `build_windows_10_hyperv.bat`
+`<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` og `hyper-v`.
+
+Type: `parallels` is currently not available for `Windows 11`.
 
 ## Information:
-The following variables can be modified in the build script:  
-* `iso_url` - Path to ISO file.
-* `iso_checksum` - Checksum of ISO file.
-* `disk_size` - Max size in MB of dynamic hard drive file.
-* `switch_name` - The virtual switch name. Only available in Hyper-V build script.
+Settings can be modified in the `windows_<windows_version>.json` files.  
+Shared variables can be found at the bottom of the file.
 
-The result output will be a box file named: `windows_10_<vm_type>.box`
+**NOTE** if you want to validate a checksum against your iso, change `iso_checksum` to match, e.g. `sha256:E239FF...`
+
+The result output will be a box file named: `windows_<windows_version>_<vm_type>.box`
 
 Newest availble guest tools will be fetched and installed for `VMware` and `Virtualbox`.  
 For `Parallels`, the guest tools of the version you are building with is installed.
