@@ -1,27 +1,30 @@
-# Windows desktop templates for Packer
+# Windows (10 / 11) Desktop Templates For Packer
 Based on [https://github.com/StefanScherer/packer-windows](https://github.com/StefanScherer/packer-windows)  
 which is forked from [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 
-Prebuilt images here: [https://app.vagrantup.com/baunegaard](https://app.vagrantup.com/baunegaard)
+Prebuilt images can be found here: [https://app.vagrantup.com/baunegaard](https://app.vagrantup.com/baunegaard)
+
+This repository aims at creating Windows desktop boxes with a minimum of changes.  
+It will only change what is necessary for `vagrant` and `packer` to properly work.
 
 ## Setup
 
 ### Requires:
-* **Windows 10 / 11 ISO** - (Drop into ./iso folder)
+* **Windows 10 / 11 ISO** - See instructions [here](iso/README.md)
 
 **To use the default settings, execute from repo root:**  
 * Windows: `.\build_windows_<windows_version>.ps1 <vm_type>`
 * Linux / OSX: `./build_windows_<windows_version>.sh <vm_type>`
 
-`<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` og `hyper-v`.
+`<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyper-v`.
 
-Type: `parallels` is currently not available for `Windows 11`.
+**NOTE** `parallels` is currently not available for `Windows 11`. It will come later.
 
 ## Information:
 Settings can be modified in the `windows_<windows_version>.json` files.  
 Shared variables can be found at the bottom of the file.
 
-**NOTE** if you want to validate a checksum against your iso, change `iso_checksum` to match, e.g. `sha256:E239FF...`
+**NOTE** if you want to validate a checksum against your iso, change `iso_checksum` to match your iso file, e.g. `sha256:E239FF...`
 
 The result output will be a box file named: `windows_<windows_version>_<vm_type>.box`
 
