@@ -19,26 +19,26 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :hyperv do |v|
     v.cpus = 2
-    v.maxmemory = 2048
+    v.maxmemory = 4096
   end
 
   config.vm.provider :virtualbox do |v|
     v.gui = true
-    v.customize ["modifyvm", :id, "--memory", 2048]
+    v.customize ["modifyvm", :id, "--memory", 4096]
     v.customize ["modifyvm", :id, "--cpus", 2]
     v.customize ["modifyvm", :id, "--vram", 128]
   end
 
   config.vm.provider :parallels do |prl|
     prl.customize ["set", :id, "--cpus", "2"]
-    prl.customize ["set", :id, "--memsize", "2048"]
+    prl.customize ["set", :id, "--memsize", "4096"]
     prl.customize ["set", :id, "--efi-boot", "off"]
   end
 
   config.vm.provider :vmware_desktop do |v|
     v.gui = true
     v.vmx["numvcpus"] = "2"
-    v.vmx["memsize"] = "2048"
+    v.vmx["memsize"] = "4096"
     v.vmx["scsi0.virtualDev"] = "lsisas1068"
   end
 end

@@ -178,7 +178,7 @@
     "headless": "false",
     "iso_url": "./iso/Windows_10.iso",
     "iso_checksum": "none",
-    "memory": "2048",
+    "memory": "4096",
     "vm_name": "windows_10"
   }
 }
