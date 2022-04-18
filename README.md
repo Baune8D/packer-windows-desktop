@@ -16,7 +16,7 @@ It will only change what is necessary for `vagrant` and `packer` to properly wor
 * Windows: `.\build_windows_<windows_version>.ps1 <vm_type>`
 * Linux / OSX: `./build_windows_<windows_version>.sh <vm_type>`
 
-`<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyper-v`.
+`<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyperv`.
 
 **NOTE** `parallels` is currently not available for `Windows 11`. It will come later.
 
