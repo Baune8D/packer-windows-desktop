@@ -13,7 +13,7 @@ It will only change what is necessary for `vagrant` and `packer` to properly wor
 * **Windows 10 / 11 ISO** - See instructions [here](iso/README.md)
 
 **To use the default settings, execute from repo root:**  
-* Windows: `.\build_windows_<windows_version>.ps1 <vm_type>`
+* Windows: `.\build_windows_<windows_version>.bat <vm_type>`
 * Linux / OSX: `./build_windows_<windows_version>.sh <vm_type>`
 
 `<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyperv`.
