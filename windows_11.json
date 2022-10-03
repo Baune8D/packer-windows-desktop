@@ -9,7 +9,7 @@
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1",
-        "./scripts/microsoft-updates.bat",
+        "./scripts/microsoft-updates.ps1",
         "./scripts/win-updates.ps1"
       ],
       "communicator": "winrm",
@@ -42,7 +42,7 @@
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1",
-        "./scripts/microsoft-updates.bat",
+        "./scripts/microsoft-updates.ps1",
         "./scripts/win-updates.ps1"
       ],
       "communicator": "winrm",
@@ -80,7 +80,7 @@
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
         "./scripts/enable-winrm.ps1",
-        "./scripts/microsoft-updates.bat",
+        "./scripts/microsoft-updates.ps1",
         "./scripts/win-updates.ps1"
       ],
       "communicator": "winrm",
@@ -111,15 +111,8 @@
   ],
   "provisioners": [
     {
-      "execute_command": "{{ .Vars }} cmd /c \"{{ .Path }}\"",
-      "remote_path": "/tmp/script.bat",
       "scripts": [
-        "./scripts/enable-rdp.bat"
-      ],
-      "type": "windows-shell"
-    },
-    {
-      "scripts": [
+        "./scripts/enable-rdp.ps1",
         "./scripts/vm-guest-tools.ps1"
       ],
       "type": "powershell"
@@ -132,9 +125,9 @@
       "execute_command": "{{ .Vars }} cmd /c \"{{ .Path }}\"",
       "remote_path": "/tmp/script.bat",
       "scripts": [
-        "./scripts/set-winrm-automatic.bat"
+        "./scripts/set-winrm-automatic.ps1"
       ],
-      "type": "windows-shell"
+      "type": "powershell"
     }
   ],
   "variables": {
