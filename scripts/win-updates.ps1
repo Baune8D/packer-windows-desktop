@@ -22,7 +22,7 @@ function EnableWinRM {
   }
 }
 
-function Check-ContinueRestartOrEnd() {
+function Test-ContinueRestartOrEnd() {
   $RegistryKey = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
   $RegistryEntry = "InstallWindowsUpdates"
   switch ($global:RestartRequired) {
@@ -34,7 +34,7 @@ function Check-ContinueRestartOrEnd() {
       }
 
       LogWrite "No Restart Required"
-      Check-WindowsUpdates
+      Test-WindowsUpdates
 
       if (($global:MoreUpdates -eq 1) -and ($script:Cycles -le $global:MaxCycles)) {
         Install-WindowsUpdates
@@ -180,10 +180,10 @@ function Install-WindowsUpdates()
     LogWrite "Result: $($InstallationResult.GetUpdateResult($i).ResultCode)"
   }
 
-  Check-ContinueRestartOrEnd
+  Test-ContinueRestartOrEnd
 }
 
-function Check-WindowsUpdates() {
+function Test-WindowsUpdates() {
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '')]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
   param()
@@ -225,7 +225,7 @@ function Check-WindowsUpdates() {
       LogWrite "Showing SearchResult was unsuccessful. Rebooting."
       $global:RestartRequired = 1
       $global:MoreUpdates = 0
-      Check-ContinueRestartOrEnd
+      Test-ContinueRestartOrEnd
       LogWrite "Show never happen to see this text!"
       Restart-Computer
     }
@@ -248,13 +248,13 @@ $script:CycleUpdateCount = 0
 
 if ($BeginWithRestart) {
   $global:RestartRequired = 1
-  Check-ContinueRestartOrEnd
+  Test-ContinueRestartOrEnd
 }
 
-Check-WindowsUpdates
+Test-WindowsUpdates
 if ($global:MoreUpdates -eq 1) {
   Install-WindowsUpdates
 }
 else {
-  Check-ContinueRestartOrEnd
+  Test-ContinueRestartOrEnd
 }
