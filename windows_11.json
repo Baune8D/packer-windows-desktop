@@ -115,10 +115,6 @@
         "./scripts/vm-guest-tools.ps1"
       ],
       "type": "powershell"
-    },
-    {
-      "restart_timeout": "5m",
-      "type": "windows-restart"
     }
   ],
   "variables": {
