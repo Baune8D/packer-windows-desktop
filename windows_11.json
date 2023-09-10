@@ -119,14 +119,6 @@
     {
       "restart_timeout": "5m",
       "type": "windows-restart"
-    },
-    {
-      "execute_command": "{{ .Vars }} cmd /c \"{{ .Path }}\"",
-      "remote_path": "/tmp/script.bat",
-      "scripts": [
-        "./scripts/set-winrm-automatic.ps1"
-      ],
-      "type": "powershell"
     }
   ],
   "variables": {
