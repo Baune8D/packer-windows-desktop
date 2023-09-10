@@ -10,7 +10,11 @@ It will only change what is necessary for `packer` and `vagrant` to properly wor
 ## Setup
 
 ### Requires:
+* `Packer` available in PATH
+* `Packer` plugin for VM provider. See: `packer plugins install --help`
 * **Windows 11 ISO** in `iso` folder: [See instructions](iso/README.md)
+* (Hyper-V only) Either `xorriso`, `mkisofs`, `hdiutil` og `oscdimg` in PATH
+  * `oscdimg` can be installed through the [Windows ADK](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
 
 **To use the default settings, execute from repo root:**  
 * Windows: `.\build_windows_11.bat <vm_type>`
