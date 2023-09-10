@@ -1,4 +1,4 @@
-# Windows (10 / 11) Desktop Templates For Packer
+# Windows 11 Desktop Templates For Packer
 Based on [https://github.com/StefanScherer/packer-windows](https://github.com/StefanScherer/packer-windows)  
 which is forked from [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 
@@ -10,23 +10,23 @@ It will only change what is necessary for `vagrant` and `packer` to properly wor
 ## Setup
 
 ### Requires:
-* **Windows 10 / 11 ISO** - See instructions [here](iso/README.md)
+* **Windows 11 ISO** in `iso` folder: [See instructions](iso/README.md)
 
 **To use the default settings, execute from repo root:**  
-* Windows: `.\build_windows_<windows_version>.bat <vm_type>`
-* Linux / OSX: `./build_windows_<windows_version>.sh <vm_type>`
+* Windows: `.\build_windows_11.bat <vm_type>`
+* Linux / macOS: `./build_windows_11.sh <vm_type>`
 
 `<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyperv`.
 
 **NOTE** `parallels` is currently not available for `Windows 11`. It will come later.
 
 ## Information:
-Settings can be modified in the `windows_<windows_version>.json` files.  
+Settings can be modified in the `windows_11.json` files.  
 Shared variables can be found at the bottom of the file.
 
 **NOTE** if you want to validate a checksum against your iso, change `iso_checksum` to match your iso file, e.g. `sha256:E239FF...`
 
-The result output will be a box file named: `windows_<windows_version>_<vm_type>.box`
+The result output will be a box file named: `windows_11_<vm_type>.box`
 
 Newest availble guest tools will be fetched and installed for `VMware` and `Virtualbox`.  
 For `Parallels`, the guest tools of the version you are building with is installed.
