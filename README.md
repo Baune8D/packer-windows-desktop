@@ -5,7 +5,7 @@ which is forked from [https://github.com/joefitzgerald/packer-windows](https://g
 Prebuilt images can be found here: [https://app.vagrantup.com/baunegaard](https://app.vagrantup.com/baunegaard)
 
 This repository aims at creating Windows desktop boxes with a minimum of changes.  
-It will only change what is necessary for `vagrant` and `packer` to properly work.
+It will only change what is necessary for `packer` and `vagrant` to properly work.
 
 ## Setup
 
@@ -31,9 +31,9 @@ The result output will be a box file named: `windows_11_<vm_type>.box`
 Newest availble guest tools will be fetched and installed for `VMware` and `Virtualbox`.  
 For `Parallels`, the guest tools of the version you are building with is installed.
 
-Microsoft updates are enabled and all available Windows updates will be installed on setup.
+**Microsoft updates are enabled and all available Windows updates will be installed on build.**
 
-#### The script will adjust the following settings for Vagrant compatibility:
+#### The script will adjust the following settings for Packer and Vagrant compatibility:
 * WinRM service configured and started automatically.  
 * 32 & 64 bit Powershell execution policy set to RemoteSigned.  
 * UAC disabled.  
