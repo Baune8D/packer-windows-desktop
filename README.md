@@ -22,8 +22,6 @@ It will only change what is necessary for `packer` and `vagrant` to properly wor
 
 `<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyperv`.
 
-**NOTE** `parallels` is currently not available for `Windows 11`. It will come later.
-
 ## Information:
 Settings can be modified in the `windows_11.json` files.  
 Shared variables can be found at the bottom of the file.
