@@ -1,5 +1,5 @@
 Write-Output 'Enabling WinRM'
-Get-NetConnectionProfile | ForEach-Object { Set-NetConnectionProfile -Name $_.Name -NetworkCategory Private }
+Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private
 Enable-PSRemoting -Force
 winrm quickconfig -q
 winrm quickconfig -transport:http
