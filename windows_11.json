@@ -112,7 +112,6 @@
   "provisioners": [
     {
       "scripts": [
-        "./scripts/enable-rdp.ps1",
         "./scripts/vm-guest-tools.ps1"
       ],
       "type": "powershell"
