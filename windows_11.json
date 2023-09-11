@@ -4,7 +4,7 @@
       "boot_command": ["a<wait>a<wait>a"],
       "boot_wait": "-1s",
       "cd_files": [
-        "./answer_files/11_efi_secure/Autounattend.xml",
+        "./answer_files/11_efi_secureboot/Autounattend.xml",
         "./scripts/fixnetwork.ps1",
         "./scripts/disable-screensaver.ps1",
         "./scripts/disable-winrm.ps1",
