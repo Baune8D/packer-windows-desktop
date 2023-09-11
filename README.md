@@ -11,7 +11,6 @@ It will only change what is necessary for `packer` and `vagrant` to properly wor
 
 ### Requires:
 * `Packer` available in PATH
-* `Packer` plugin for VM provider. See: `packer plugins install --help`
 * **Windows 11 ISO** in `iso` folder: [See instructions](iso/README.md)
 * (Hyper-V only) Either `xorriso`, `mkisofs`, `hdiutil` og `oscdimg` in PATH
   * `oscdimg` can be installed through the [Windows ADK](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
@@ -23,7 +22,7 @@ It will only change what is necessary for `packer` and `vagrant` to properly wor
 `<vm_type>` Can be either `vmware`, `virtualbox`, `parallels` or `hyperv`.
 
 ## Information:
-Settings can be modified in the `windows_11.json` files.  
+Settings can be modified in the `windows_11.pkr.hcl` files.  
 Shared variables can be found at the bottom of the file.
 
 **NOTE** if you want to validate a checksum against your iso, change `iso_checksum` to match your iso file, e.g. `sha256:E239FF...`
