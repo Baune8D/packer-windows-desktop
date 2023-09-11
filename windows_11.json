@@ -19,6 +19,7 @@
       "enable_dynamic_memory": false,
       "enable_mac_spoofing": true,
       "enable_secure_boot": true,
+      "enable_tpm": true,
       "enable_virtualization_extensions": true,
       "generation": "2",
       "guest_additions_mode": "disable",
