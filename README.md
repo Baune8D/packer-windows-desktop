@@ -13,7 +13,7 @@ It will only change what is necessary for `packer` and `vagrant` to properly wor
 * `Packer` available in PATH
 * **Windows 11 ISO** in `iso` folder: [See instructions](iso/README.md)
 * (Hyper-V only) Either `xorriso`, `mkisofs`, `hdiutil` og `oscdimg` in PATH
-  * `oscdimg` can be installed through the [Windows ADK](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
+* `oscdimg` can be installed through the [Windows ADK](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install) or `choco install windows-adk-oscdimg`
 
 **To use the default settings, execute from repo root:**  
 * Windows: `.\build_windows_11.bat <vm_type>`
