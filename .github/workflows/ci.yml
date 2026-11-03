@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  PACKER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: hashicorp/setup-packer@v3
+        with:
+          version: latest
+      - run: packer init windows_11.pkr.hcl
+      - run: packer fmt -check -diff windows_11.pkr.hcl
+      # The hyperv plugin needs powershell.exe, so the windows job validates it
+      - run: packer validate -except=hyperv-iso.hyperv windows_11.pkr.hcl
+      - run: shellcheck build_windows_11.sh
+      - run: Invoke-ScriptAnalyzer -Path . -Recurse -EnableExit
+        shell: pwsh
+
+  validate-hyperv:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v7
+      - uses: hashicorp/setup-packer@v3
+        with:
+          version: latest
+      - run: packer init windows_11.pkr.hcl
+      - run: packer validate -only=hyperv-iso.hyperv windows_11.pkr.hcl
