@@ -1,0 +1,19 @@
+windows_11.pkr.hcl
+  s_1da20591e67452::t_2bcf1761047105 62-92,96-120,124-149,153-176,178-180,182-187
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "21e62145efc4b0445bd6b19e96589ef4edc88b81",
+  "prompts": {},
+  "sessions": {
+    "s_1da20591e67452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "56de8afb-cd13-4b9c-b07e-fc995dbca6f0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Morten Larsen <mortenl41@gmail.com>"
+    }
+  }
+}
