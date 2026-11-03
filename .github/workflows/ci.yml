@@ -11,6 +11,8 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: hashicorp/setup-packer@v3
@@ -26,6 +28,8 @@ jobs:
 
   validate-hyperv:
     runs-on: windows-2025
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: hashicorp/setup-packer@v3
