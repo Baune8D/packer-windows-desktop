@@ -5,6 +5,7 @@
 
 function Set-NetworkTypeToPrivate {
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingPositionalParameters', '')]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
   param()
   # Network location feature was only introduced in Windows Vista - no need to bother with this
   # if the operating system is older than Vista
