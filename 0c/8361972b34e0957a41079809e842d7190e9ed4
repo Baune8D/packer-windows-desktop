@@ -1,0 +1,19 @@
+LICENSE.txt
+  s_1da20591e67452::t_3aa3046bcc8f3b 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0c8361972b34e0957a41079809e842d7190e9ed4",
+  "prompts": {},
+  "sessions": {
+    "s_1da20591e67452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "56de8afb-cd13-4b9c-b07e-fc995dbca6f0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Morten Larsen <mortenl41@gmail.com>"
+    }
+  }
+}
