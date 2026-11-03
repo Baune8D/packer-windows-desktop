@@ -48,9 +48,21 @@ variable "iso_url" {
   default = "./iso/Windows_11.iso"
 }
 
+variable "locale" {
+  type        = string
+  default     = "en-US"
+  description = "Input, system and user locale, e.g. da-DK. The display language stays en-US."
+}
+
 variable "memory" {
   type    = string
   default = "4096"
+}
+
+variable "time_zone" {
+  type        = string
+  default     = "Pacific Standard Time"
+  description = "Windows time zone ID, e.g. Romance Standard Time. tzutil /l lists them."
 }
 
 variable "vm_name" {
@@ -58,11 +70,20 @@ variable "vm_name" {
   default = "windows_11"
 }
 
+locals {
+  answer_file_vars = {
+    locale    = var.locale
+    time_zone = var.time_zone
+  }
+}
+
 source "hyperv-iso" "hyperv" {
   boot_command = ["a<wait>a<wait>a"]
   boot_wait    = "-1s"
+  cd_content = {
+    "Autounattend.xml" = templatefile("./answer_files/11_hyperv/Autounattend.xml.pkrtpl", local.answer_file_vars)
+  }
   cd_files = [
-    "./answer_files/11_hyperv/Autounattend.xml",
     "./scripts/fixnetwork.ps1",
     "./scripts/disable-screensaver.ps1",
     "./scripts/disable-winrm.ps1",
@@ -98,8 +119,10 @@ source "parallels-iso" "parallels" {
   communicator = "winrm"
   cpus         = "${var.cpus}"
   disk_size    = "${var.disk_size}"
+  floppy_content = {
+    "Autounattend.xml" = templatefile("./answer_files/11_parallels/Autounattend.xml.pkrtpl", local.answer_file_vars)
+  }
   floppy_files = [
-    "./answer_files/11_parallels/Autounattend.xml",
     "./scripts/fixnetwork.ps1",
     "./scripts/disable-screensaver.ps1",
     "./scripts/disable-winrm.ps1",
@@ -123,8 +146,10 @@ source "parallels-iso" "parallels" {
 source "virtualbox-iso" "virtualbox" {
   boot_command = ["a<wait>a<wait>a"]
   boot_wait    = "-1s"
+  cd_content = {
+    "Autounattend.xml" = templatefile("./answer_files/11_hyperv/Autounattend.xml.pkrtpl", local.answer_file_vars)
+  }
   cd_files = [
-    "./answer_files/11_hyperv/Autounattend.xml",
     "./scripts/fixnetwork.ps1",
     "./scripts/disable-screensaver.ps1",
     "./scripts/disable-winrm.ps1",
@@ -152,8 +177,10 @@ source "virtualbox-iso" "virtualbox" {
 source "vmware-iso" "vmware" {
   boot_command = ["a<wait>a<wait>a"]
   boot_wait    = "-1s"
+  cd_content = {
+    "Autounattend.xml" = templatefile("./answer_files/11_bypass/Autounattend.xml.pkrtpl", local.answer_file_vars)
+  }
   cd_files = [
-    "./answer_files/11_bypass/Autounattend.xml",
     "./scripts/fixnetwork.ps1",
     "./scripts/disable-screensaver.ps1",
     "./scripts/disable-winrm.ps1",

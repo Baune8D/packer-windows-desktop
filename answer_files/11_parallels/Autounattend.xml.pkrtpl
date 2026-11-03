@@ -50,11 +50,11 @@
             <SetupUILanguage>
                 <UILanguage>en-US</UILanguage>
             </SetupUILanguage>
-            <InputLocale>en-US</InputLocale>
-            <SystemLocale>en-US</SystemLocale>
+            <InputLocale>${locale}</InputLocale>
+            <SystemLocale>${locale}</SystemLocale>
             <UILanguage>en-US</UILanguage>
             <UILanguageFallback>en-US</UILanguageFallback>
-            <UserLocale>en-US</UserLocale>
+            <UserLocale>${locale}</UserLocale>
         </component>
     </settings>
     <settings pass="offlineServicing">
@@ -64,10 +64,10 @@
     </settings>
     <settings pass="oobeSystem">
         <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <InputLocale>en-US</InputLocale>
-            <SystemLocale>en-US</SystemLocale>
+            <InputLocale>${locale}</InputLocale>
+            <SystemLocale>${locale}</SystemLocale>
             <UILanguage>en-US</UILanguage>
-            <UserLocale>en-US</UserLocale>
+            <UserLocale>${locale}</UserLocale>
         </component>
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <UserAccounts>
@@ -116,13 +116,13 @@
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File e:\fixnetwork.ps1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\fixnetwork.ps1</CommandLine>
                     <Description>Fix public network</Description>
                     <Order>3</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File e:\disable-winrm.ps1</CommandLine>
+                    <CommandLine>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\disable-winrm.ps1</CommandLine>
                     <Description>Disable WinRM</Description>
                     <Order>4</Order>
                     <RequiresUserInput>true</RequiresUserInput>
@@ -153,18 +153,18 @@
                     <Description>Enable AutoLogon</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File e:\microsoft-updates.ps1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\microsoft-updates.ps1</CommandLine>
                     <Order>98</Order>
                     <Description>Enable Microsoft Updates</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File e:\disable-screensaver.ps1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\disable-screensaver.ps1</CommandLine>
                     <Description>Disable Screensaver</Description>
                     <Order>99</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File e:\win-updates.ps1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1</CommandLine>
                     <Description>Install Windows Updates</Description>
                     <Order>100</Order>
                     <RequiresUserInput>true</RequiresUserInput>
@@ -181,7 +181,7 @@
             </OEMInformation>
             <!-- Rename computer here. -->
             <ComputerName>vagrant-win11</ComputerName>
-            <TimeZone>Pacific Standard Time</TimeZone>
+            <TimeZone>${time_zone}</TimeZone>
             <RegisteredOwner/>
         </component>
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">

@@ -17,5 +17,5 @@ indent_size = 4
 [*.bat]
 end_of_line = crlf
 
-[*.xml]
+[*.{xml,pkrtpl}]
 indent_size = 4
