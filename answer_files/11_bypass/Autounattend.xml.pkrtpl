@@ -150,7 +150,7 @@
                     <Description>Disable Hibernation Mode</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c wmic useraccount where "name='vagrant'" set PasswordExpires=FALSE</CommandLine>
+                    <CommandLine>cmd.exe /c powershell -Command "Set-LocalUser -Name vagrant -PasswordNeverExpires $true"</CommandLine>
                     <Order>7</Order>
                     <Description>Disable password expiration for vagrant user</Description>
                 </SynchronousCommand>
