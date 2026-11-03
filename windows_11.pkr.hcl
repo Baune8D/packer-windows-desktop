@@ -2,23 +2,23 @@ packer {
   required_plugins {
     hyperv = {
       source  = "github.com/hashicorp/hyperv"
-      version = "~> 1"
+      version = "~> 1.1"
     }
     parallels = {
       source  = "github.com/hashicorp/parallels"
-      version = "~> 1"
+      version = "~> 1.2"
     }
     vagrant = {
       source  = "github.com/hashicorp/vagrant"
-      version = "~> 1"
+      version = "~> 1.1"
     }
     virtualbox = {
       source  = "github.com/hashicorp/virtualbox"
-      version = "~> 1"
+      version = "~> 1.1"
     }
     vmware = {
       source  = "github.com/hashicorp/vmware"
-      version = "~> 1"
+      version = "~> 2.1"
     }
   }
 }
