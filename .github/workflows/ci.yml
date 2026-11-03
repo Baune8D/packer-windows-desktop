@@ -32,4 +32,5 @@ jobs:
         with:
           version: latest
       - run: packer init windows_11.pkr.hcl
-      - run: packer validate -only=hyperv-iso.hyperv windows_11.pkr.hcl
+      # Quoted, because PowerShell splits -only=hyperv-iso.hyperv at the period
+      - run: packer validate "-only=hyperv-iso.hyperv" windows_11.pkr.hcl
