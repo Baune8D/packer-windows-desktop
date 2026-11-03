@@ -1,0 +1,21 @@
+README.md
+  s_1da20591e67452::t_b7cabc541d66e4 1,3-4,6,8,10,12,14-17,19,21,23-26,28,30-32,34-82
+iso/README.md
+  s_1da20591e67452::t_ae2e4d9f89f351 1,3-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d96917218a76fce5b570997d5a5bac4e4612af33",
+  "prompts": {},
+  "sessions": {
+    "s_1da20591e67452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "56de8afb-cd13-4b9c-b07e-fc995dbca6f0",
+        "model": "unknown"
+      },
+      "human_author": "Morten Larsen <mortenl41@gmail.com>"
+    }
+  }
+}
