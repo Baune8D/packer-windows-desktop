@@ -1,0 +1,21 @@
+scripts/fixnetwork.ps1
+  s_1da20591e67452::t_42c9ccf8cd0b26 8
+scripts/win-updates.ps1
+  s_1da20591e67452::t_2c6846a5c198e4 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ab0f1351840740885cf62d4ac990ca387f364aac",
+  "prompts": {},
+  "sessions": {
+    "s_1da20591e67452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "56de8afb-cd13-4b9c-b07e-fc995dbca6f0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Morten Larsen <mortenl41@gmail.com>"
+    }
+  }
+}
