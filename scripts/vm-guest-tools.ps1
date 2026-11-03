@@ -17,31 +17,23 @@ if ("$env:PACKER_BUILDER_TYPE" -eq "vmware-iso") {
     Try {
       # Disabling the progress bar speeds up IWR https://github.com/PowerShell/PowerShell/issues/2138
       $ProgressPreference = 'SilentlyContinue'
-      $pageContentLinks = (Invoke-WebRequest('https://softwareupdate.vmware.com/cds/vmw-desktop/ws') -UseBasicParsing).Links | where-object { $_.href -Match "[0-9]" } | Select-Object href | ForEach-Object { $_.href.Trim('/') }
-      $versionObject = $pageContentLinks | ForEach-Object { new-object System.Version ($_) } | sort-object -Descending | select-object -First 1 -Property:Major, Minor, Build
-      $newestVersion = $versionObject.Major.ToString() + "." + $versionObject.Minor.ToString() + "." + $versionObject.Build.ToString() | out-string
-      $newestVersion = $newestVersion.TrimEnd("`r?`n")
-
-      $nextURISubdirectoryObject = (Invoke-WebRequest("https://softwareupdate.vmware.com/cds/vmw-desktop/ws/$newestVersion/") -UseBasicParsing).Links | where-object { $_.href -Match "[0-9]" } | Select-Object href | where-object { $_.href -Match "[0-9]" }
-      $nextUriSubdirectory = $nextURISubdirectoryObject.href | Out-String
-      $nextUriSubdirectory = $nextUriSubdirectory.TrimEnd("`r?`n")
-      $newestVMwareToolsURL = "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/$newestVersion/$nextURISubdirectory/windows/packages/tools-windows.tar"
+      $toolsBaseURL = 'https://packages.vmware.com/tools/releases/latest/windows'
+      $toolsIsoName = (Invoke-WebRequest "$toolsBaseURL/" -UseBasicParsing).Links | Where-Object { $_.href -Match '^VMware-tools-windows-[0-9.-]+\.iso$' } | Select-Object -First 1 -ExpandProperty href
+      if (!$toolsIsoName) { throw "No VMware tools ISO found in $toolsBaseURL" }
+      $newestVMwareToolsURL = "$toolsBaseURL/$toolsIsoName"
       Write-Output "The latest version of VMware tools has been determined to be downloadable from $newestVMwareToolsURL"
-      [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVMwareToolsURL", 'C:\Windows\Temp\vmware-tools.tar')
+      [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile("$newestVMwareToolsURL", 'C:\Windows\Temp\windows.iso')
     }
     Catch {
       Write-Output "Unable to determine the latest version of VMware tools. Falling back to hardcoded URL."
-      (New-Object System.Net.WebClient).DownloadFile('https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.0.2/21581411/windows/packages/tools-windows.tar', 'C:\Windows\Temp\vmware-tools.tar')
+      [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object System.Net.WebClient).DownloadFile('https://packages.vmware.com/tools/releases/13.1.5/windows/VMware-tools-windows-13.1.5-25544008.iso', 'C:\Windows\Temp\windows.iso')
     }
-    cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x C:\Windows\Temp\vmware-tools.tar -oC:\Windows\Temp
-    Move-Item c:\windows\temp\VMware-tools-windows-*.iso c:\windows\temp\windows.iso
     Try { Remove-Item "C:\Program Files (x86)\VMWare" -Recurse -Force -ErrorAction Stop } Catch { Write-Output "Directory didn't exist to be removed." }
   }
 
   cmd /c "C:\PROGRA~1\7-Zip\7z.exe" x "C:\Windows\Temp\windows.iso" -oC:\Windows\Temp\VMWare
   cmd /c C:\Windows\Temp\VMWare\setup.exe /S /v"/qn REBOOT=R\"
 
-  Remove-Item -Force "C:\Windows\Temp\vmware-tools.tar"
   Remove-Item -Force "C:\Windows\Temp\windows.iso"
   Remove-Item -Force -Recurse "C:\Windows\Temp\VMware"
 }
