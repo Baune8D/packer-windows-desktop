@@ -1,7 +1,7 @@
 # Windows 11 desktop boxes for Packer
 
 [![CI](https://github.com/Baune8D/packer-windows-desktop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Baune8D/packer-windows-desktop/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/github/license/Baune8D/packer-windows-desktop)](https://github.com/Baune8D/packer-windows-desktop/blob/main/LICENSE.txt)
+[![License: MIT](https://img.shields.io/github/license/Baune8D/packer-windows-desktop)](https://github.com/Baune8D/packer-windows-desktop/blob/main/LICENSE)
 
 A Packer template that builds a Windows 11 desktop Vagrant box from your own ISO, for Hyper-V, Parallels, VirtualBox or VMware. It changes only what Packer and Vagrant need to work, and installs all available Windows updates.
 
@@ -79,4 +79,4 @@ It also enables Microsoft Update and installs all available Windows updates, and
 
 ## License
 
-[MIT](LICENSE.txt)
+[MIT](LICENSE)
